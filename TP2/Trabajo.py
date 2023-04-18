@@ -27,15 +27,18 @@ peliculas = [
 for pelis in peliculas:
     pila.push(pelis)
 
+con = 0
+
 while (pila.size() > 0):
     dato = pila.pop()
     if (dato["year"] == 2014):
         print("\n", dato["title"], "se estreno en 2014.")
     if (dato["year"] == 2018):
-        print("\n", dato["title"], "se estreno en 2018.")
+        con += 1
     if (dato["year"] == 2016 and dato["studio"] == "Marvel Studios"):
         print("\n", dato["title"], "se estreno en 2016 por Marvel Studios.")
 
+print(f"\n En 2018 se estrenaron {con} peliculas.")
 
 # EJERCICIO 2 -   Dada una pila de personajes de Marvel Cinematic Universe (MCU), de los cuales se dispone de
 #                 su nombre y la cantidad de películas de la saga en la que participó, implementar las funciones
