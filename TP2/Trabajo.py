@@ -9,6 +9,7 @@ from pila import Pila
 
 #                 c. mostrar las películas de Marvel Studios estrenadas en el año 2016.
 
+print("EJERCICIO 1")
 pila = Pila()
 
 peliculas = [
@@ -21,14 +22,13 @@ peliculas = [
             {"title": "Green Book", "year": 2018, "studio": "Dreamworks"},
             {"title": "Doctor Strange", "year": 2016, "studio": "Marvel Studios"},
             {"title": "El Hobbit 3", "year": 2014, "studio": "Metro-Goldwyn-Mayer"},
-            {"title": "GOTG", "year": 2014, "studio": "Marvel Studios"},
+            {"title": "GOTG", "year": 2014, "studio": "Marvel Studios"}
             ]
 
 for pelis in peliculas:
     pila.push(pelis)
 
 con = 0
-
 while (pila.size() > 0):
     dato = pila.pop()
     if (dato["year"] == 2014):
@@ -53,3 +53,35 @@ print(f"\n En 2018 se estrenaron {con} peliculas.")
 #                 c. determinar en cuantas películas participo la Viuda Negra (Black Widow);
 
 #                 d. mostrar todos los personajes cuyos nombre empiezan con C, D y G.
+
+
+print("\nEJERCICIO 2")
+pila2 = Pila()
+
+personajes = [
+    {"name": "Doctor Strange", "movies": 4},
+    {"name": "Captain America", "movies": 11},
+    {"name": "Thor", "movies": 9},
+    {"name": "Groot", "movies": 6},
+    {"name": "Black Widow", "movies": 9},
+    {"name": "Rocket Raccoon", "movies": 6},
+    {"name": "Drax", "movies": 6},
+    {"name": "Nebula", "movies": 6},
+    {"name": "Captain Marvel", "movies": 4}
+]
+
+for person in personajes:
+    pila2.push(person)
+
+
+tamaniopila2 = pila2.size()
+letras = ['C', 'D', 'G']
+
+while pila2.size() > 0:
+    dato = pila2.pop()
+    if (dato["name"] == "Rocket Raccoon") or (dato["name"] == "Groot"):
+        print("\n", dato["name"], f" esta en la posicion {tamaniopila2 - pila2.size()}")
+    if (dato["movies"] > 5):
+        print("\n", dato["name"], f" aparecio en mas de 5 peliculas: un total de ", dato["movies"])
+    if (dato["name"][0] in letras):
+        print("\n", dato["name"], " empieza con", dato["name"][0] + ".")
