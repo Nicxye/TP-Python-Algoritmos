@@ -1,4 +1,4 @@
-from TP3.pila import Pila
+from Clases.pila import Pila
 
 # EJERCICIO 1 -   Dada una pila de películas de las que se conoce su título, estudio cinematográfico y año de estreno,
 #                 desarrollar las funciones necesarias para resolver las siguientes actividades:

@@ -1,5 +1,5 @@
-from cola import Cola
-from pila import Pila
+from Clases.cola import Cola
+from Clases.pila import Pila
 
 # EJERCICIO 10  Dada una cola con las notificaciones de las aplicaciones de redes sociales de un Smartphone,
 #               de las cual se cuenta con la hora de la notificación, la aplicación que la emitió y el mensaje,
@@ -101,7 +101,6 @@ print("Existen", con, "notificaciones que fueron recibidas entre las 11:43 y las
     # de superhéroes.
 print("\nEJERCICIO 22")
 cola = Cola()
-carol = False
 
 personajes = [
     {"nombre": "Stephen Strange", "superheroe": "Doctor Strange", "genero": "M"},
