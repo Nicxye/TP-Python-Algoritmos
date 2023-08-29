@@ -284,11 +284,11 @@ for i in range(lista_entrenadores.size()):
 
 print("\nk:")
 entrenador_buscado = input("Escriba un nombre de entrenador: ")
-if (lista_entrenadores.search(entrenador_buscado, "nombre")) is None:
+dato = lista_entrenadores.search(entrenador_buscado, "nombre")
+if (dato) is None:
     print(f"{entrenador_buscado} no aparece en la lista de entrenadores.")
     exit()
 poke_buscado = input("Escriba un nombre de pokemon: ")
-dato = lista_entrenadores.search(entrenador_buscado, "nombre")
 lista = lista_entrenadores.get_element_by_index(dato)
 entre, poke = lista[0], lista[1]
 buscar = poke.search(poke_buscado, "nombre")
