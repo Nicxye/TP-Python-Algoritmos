@@ -274,14 +274,14 @@ class BinaryTree:
     def order_by_level(self):
         if self.root is not None:
             cola = Cola()
-            cola.arrive(self.root)
+            cola.arrival(self.root)
             while cola.size() > 0:
                 node = cola.attention()
                 print(node.value)
                 if node.left is not None:
-                    cola.arrive(node.left)
+                    cola.arrival(node.left)
                 if node.right is not None:
-                    cola.arrive(node.right)
+                    cola.arrival(node.right)
 
     def inorden_file_by_rank(self, file_name):  #es lo mismo que inorden, pero esta muestra otros valores.
         def __inorden_file(root, file_name):
@@ -320,7 +320,7 @@ class BinaryTree:
             if root is not None:
                 __inorden_file(root.left, file_name)
                 value = get_value_from_file(file_name, root.other_values)
-                if value[3] != '-':
+                if value[3] is not '-':
                     print(root.value + ".", "Maestro:", value[3])
                     __inorden_file(root.right, file_name)
 
@@ -371,16 +371,25 @@ class BinaryTree:
         
         __inorden_file(self.root, file_name, hero)
 
-    # def aves_defeated_by(self, file_name, hero):
-    #     if root is not None:
-    #             value = get_value_from_file(file_name, root.other_values)
-    #             value[1] = "heracles"
-
-    def captured_by_heracles(self, file_name):
+    def aves_defeated_by(self, file_name, hero = None):
         def __inorden_heracles(root, file_name):
             if root is not None:
                 __inorden_heracles(root.left, file_name)
                 value = get_value_from_file(file_name, root.other_values)
+                if value[0] == "aves del estinfalo":
+                    value[1] = "heracles"
+                __inorden_heracles(root.right, file_name)
+        
+        __inorden_heracles(self.root, file_name)
+
+    def captured_by_heracles(self, file_name):
+        bestias = ["cerbero", "toro de creta", "cierva de cerinea", "jabali de erimanto"]
+        def __inorden_heracles(root, file_name):
+            if root is not None:
+                __inorden_heracles(root.left, file_name)
+                value = get_value_from_file(file_name, root.other_values)
+                if value[0] in bestias:
+                    value[3] = "heracles"
                 if value[3] == "heracles":
                     print(root.value)
                 __inorden_heracles(root.right, file_name)
@@ -388,3 +397,28 @@ class BinaryTree:
         __inorden_heracles(self.root, file_name)
 
     
+    # def inorden_ranking(self, file_name, ranking):
+    #     def __inorden_ranking(root, ranking):
+    #         if root is not None:
+    #             __inorden_ranking(root.left, ranking)
+    #             value = get_value_from_file(file_name, root.other_values)
+    #             if value[1] is not None:
+    #                 if value[1] not in ranking:
+    #                     ranking[value[1]] = 1
+    #                 else:
+    #                     ranking[value[1]] += 1
+    #             __inorden_ranking(root.right, ranking)
+
+    #     __inorden_ranking(self.root, ranking)
+
+    def cargar_descripcion(self, file_name, criatura, desc):
+        def __inorden_desc(root, file_name):
+            if root is not None:
+                __inorden_desc(root.left, file_name)
+                value = get_value_from_file(file_name, root.other_values)
+                if value[0] == criatura:
+                    value[2] = desc
+                    print(value)
+                __inorden_desc(root.right, file_name)
+        
+        __inorden_desc(self.root, file_name)

@@ -205,22 +205,10 @@ for index, linea in enumerate(creature_lines):
 print("\nA:")
 defeated_by_tree.inorden_file_by_rank(CRIATURAS)
 
-# print("\nB:")
-# nombre = input("Ingrese la criatura, en minuscula, de la que quiera cargar descripción:")
-# encontrado = creature_tree.search("laquesis")
-
-# if encontrado:
-#     desc = input("Agregue la descripcion: ")
-#     with open(CRIATURAS, 'a') as file:
-#         for linea in creature_lines:
-#             if linea.startswith("laquesis"):
-#                 linea =linea + desc + ";\n"
-#                 print(linea)
-#             file.write("\n")
-#             file.write(linea)
-#         file.close()
-# else:
-#     print("No se ha encontrado esa criatura.")
+print("\nB:")
+nombre = input("Ingrese la criatura, en minuscula, de la que quiera cargar descripción:")
+desc = input("Ingrese descripcion:")
+creature_tree.cargar_descripcion(CRIATURAS, nombre, desc)
 
 print("\nC:")
 buscar = creature_tree.search("talos")
@@ -229,8 +217,8 @@ if buscar:
 else:
     print("No se encuentra en el arbol.")
 
-# print("\nD:")
-# print(defeated_by_tree.contar("talos"))
+print("\nD:")
+#print(defeated_by_tree.inorden_ranking("talos"))
 
 print("\nE:")
 creature_tree.inorden_defeated_by(CRIATURAS, "heracles")
@@ -238,19 +226,22 @@ creature_tree.inorden_defeated_by(CRIATURAS, "heracles")
 print("\nF:")
 creature_tree.inorden_undefeated(CRIATURAS)
 
-# print("\nH:")
+print("\nH:")
+creature_tree.captured_by_heracles(CRIATURAS)
 
 print("\nI:")
 creature_tree.search_by_coincidence("tal")
 
-print("\nJ:")
-creature_tree.delete_node("basilisco")
-creature_tree.delete_node("sirenas")
 
-creature_tree.inorden()
+print("\nK:")
+creature_tree.aves_defeated_by(CRIATURAS)
 
-# print("\nK:")
-# print(creature_tree.root.other_values)
+
+print("\nM:")
+creature_tree.order_by_level()
+
+print("\nN:")
+creature_tree.captured_by_heracles(CRIATURAS)
 
 print("\nL:")
 dragon = creature_tree.search("ladon")
@@ -259,8 +250,8 @@ if dragon:
     creature_tree.delete_node("ladon")
     creature_tree.insert_node("dragon ladon", other_values)
 
-print("\nM:")
-creature_tree.order_by_level()
+print("\nJ:")
+creature_tree.delete_node("basilisco")
+creature_tree.delete_node("sirenas")
 
-print("\nN:") ##############
-creature_tree.captured_by_heracles(CRIATURAS)
+creature_tree.inorden()
