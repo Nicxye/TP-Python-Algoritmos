@@ -1,4 +1,5 @@
 from Clases.cola import Cola
+from Clases.cola_prioridad import ColaPrioridad
 from Clases.pila import Pila
 
 # EJERCICIO 10  Dada una cola con las notificaciones de las aplicaciones de redes sociales de un Smartphone,
@@ -60,7 +61,8 @@ print("Existen", con, "notificaciones que fueron recibidas entre las 11:43 y las
 #     if (dato["hora"] >= 1143 and dato["hora"] <= 1557):
 #         pila.push(noti)
 
-# EJERCICIO 16 SIN COLAS PRIORIDAD
+
+# EJERCICIO 16
 
      # Utilice cola de prioridad, para atender la cola de impresión tomando en cuenta el siguiente
      # criterio (1- empleados, 2- staff de tecnologías de la información “TI”, 3- gerente), y resuelva la
@@ -74,15 +76,61 @@ print("Existen", con, "notificaciones que fueron recibidas entre las 11:43 y las
      # f. cargue dos documentos de empleados y uno de gerente.
      # g. imprima todos los documentos de la cola de impresión.
 
-# cola = Cola()
-# documentos = [
-#     {"nombre": "Carlos"},
-#     {"nombre": "Jorge"},
-#     {"nombre": "Ana"}
-# ]
-# for i in range(3):
-#     nombre = input(f"Ingrese el nombre {i + 1}: ")
-#     cola.arrive(nombre)
+print("\nEJERCICIO 16\n")
+
+cola_p = ColaPrioridad()
+
+print("\nA:")
+empresa = [
+    {"nombre":"Carlos", "prioridad":1},
+    {"nombre":"Jose", "prioridad":1},
+    {"nombre":"Maria", "prioridad":1},
+]
+
+for i in empresa:
+    cola_p.arrive(i["nombre"], i["prioridad"])
+
+
+
+print("\nB:")
+print(cola_p.attention()[1])
+
+
+print("\nC:")
+empresa = [
+    {"nombre":"Ana", "prioridad":2},
+    {"nombre":"Pedro", "prioridad":2},
+]
+
+for i in empresa:
+    cola_p.arrive(i["nombre"], i["prioridad"])
+
+print("\nD:")
+empresa = [
+    {"nombre":"Ernesto", "prioridad":3},
+]
+
+for i in empresa:
+    cola_p.arrive(i["nombre"], i["prioridad"])
+
+print("\nE:")
+for i in range(2):
+    print(cola_p.attention()[1])
+
+print("\nF:")
+
+empresa = [
+    {"nombre":"Jose", "prioridad":1},
+    {"nombre":"Adrian", "prioridad":1},
+    {"nombre":"Juan", "prioridad":3},
+]
+
+for i in empresa:
+    cola_p.arrive(i["nombre"], i["prioridad"])
+
+print("\nG:")
+while cola_p.size() > 0:
+    print(cola_p.attention()[1])
 
 
 # EJERCICIO 22
