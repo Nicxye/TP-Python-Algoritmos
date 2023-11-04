@@ -1,0 +1,1 @@
+from TP6 import Trabajo
