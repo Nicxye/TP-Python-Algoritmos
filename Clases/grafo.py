@@ -1,7 +1,7 @@
-from lista import Lista as ListaArista
-from cola import Cola
-from pila import Pila
-from heap_min import Heap
+from Clases.lista import Lista as ListaArista
+from Clases.cola import Cola
+from Clases.pila import Pila
+from Clases.heap_min import Heap
 
 class Arista:
 

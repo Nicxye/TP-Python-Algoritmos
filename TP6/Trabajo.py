@@ -114,87 +114,97 @@ grafo_maravillas_n = Grafo(dirigido=False)
 MARAVILLAS_N = grafo_maravillas_n
 MARAVILLAS_A = grafo_maravillas_a
 DISTANCIA = randint(1000, 500000)
+CRITERIO = "nombre"
 
 print("\nA:")
 
+class Maravilla:
+    def __init__(self, nombre, pais, tipo):
+        self.nombre = nombre
+        self.pais = pais if isinstance(pais, list) else [pais]
+        self.tipo = tipo
+
+    def __str__(self):
+        return f"{self.nombre} - {self.pais} - {self.tipo}"
 
 maravilla = [
-    {"nombre":"Amazonas", "pais":["Argentina", "Bolivia", "Brasil", "Colombia", "Ecuador", "Guayana Francesa", "Guyana", "Peru", "Surinam", "Venezuela"], "tipo": "Natural"},
-    {"nombre":"Bahia de Ha-Long", "pais": "Vietnam", "tipo": "Natural"},
-    {"nombre":"Cataratas del Iguazu", "pais": ["Argentina", "Brasil"], "tipo": "Natural"},
-    {"nombre":"Chichen Itza", "pais": "Mexico", "tipo": "Arquitectonica"},
-    {"nombre":"Coliseo de Roma", "pais": "Italia", "tipo": "Arquitectonica"},
-    {"nombre":"Cristo Redentor", "pais": "Brasil", "tipo": "Arquitectonica"},
-    {"nombre":"Gran Muralla China", "pais": "China", "tipo": "Arquitectonica"},
-    {"nombre":"Isla Jeju", "pais": "Corea del Sur", "tipo": "Natural"},
-    {"nombre":"Machu Picchu", "pais": "Peru", "tipo": "Arquitectonica"},
-    {"nombre":"Montania de la Mesa", "pais": "Sudafrica", "tipo": "Natural"},
-    {"nombre":"Parque de Komodo", "pais": "Indonesia", "tipo": "Natural"},
-    {"nombre":"Petra", "pais": "Jordania", "tipo": "Arquitectonica"},
-    {"nombre":"Rio de Puerto Princesa", "pais": "Filipinas", "tipo": "Natural"},
-    {"nombre":"Taj Mahal", "pais": "India", "tipo": "Arquitectonica"}
+    Maravilla("Amazonas",["Argentina", "Bolivia", "Brasil", "Colombia", "Ecuador", "Guayana Francesa", "Guyana", "Peru", "Surinam", "Venezuela"], "Natural"),
+    Maravilla("Bahia de Ha-Long", "Vietnam", "Natural"),
+    Maravilla("Cataratas del Iguazu", ["Argentina", "Brasil"], "Natural"),
+    Maravilla("Chichen Itza", "Mexico", "Arquitectonica"),
+    Maravilla("Coliseo de Roma", "Italia", "Arquitectonica"),
+    Maravilla("Cristo Redentor", "Brasil", "Arquitectonica"),
+    Maravilla("Gran Muralla China", "China", "Arquitectonica"),
+    Maravilla("Isla Jeju", "Corea del Sur", "Natural"),
+    Maravilla("Machu Picchu", "Peru", "Arquitectonica"),
+    Maravilla("Montania de la Mesa", "Sudafrica", "Natural"),
+    Maravilla("Parque de Komodo", "Indonesia", "Natural"),
+    Maravilla("Petra", "Jordania", "Arquitectonica"),
+    Maravilla("Rio de Puerto Princesa", "Filipinas", "Natural"),
+    Maravilla("Taj Mahal", "India", "Arquitectonica")
 ]
 
 for i in maravilla:
-    if i["tipo"] == "Natural":
-        MARAVILLAS_N.insert_vertice(i, criterio="nombre")
+    if i.tipo == "Natural":
+        MARAVILLAS_N.insert_vertice(i, CRITERIO)
     else:
-        MARAVILLAS_A.insert_vertice(i, criterio="nombre")
+        MARAVILLAS_A.insert_vertice(i, CRITERIO)
 
 
 print("\nB:")
-MARAVILLAS_N.insert_arist("Amazonas", "Bahia de Ha-Long", DISTANCIA)
-MARAVILLAS_N.insert_arist("Amazonas", "Cataratas del Iguazu", DISTANCIA)
-MARAVILLAS_N.insert_arist("Amazonas", "Isla Jeju", DISTANCIA)
-MARAVILLAS_N.insert_arist("Amazonas", "Montania de la Mesa", DISTANCIA)
-MARAVILLAS_N.insert_arist("Amazonas", "Parque de Komodo", DISTANCIA)
-MARAVILLAS_N.insert_arist("Amazonas", "Rio de Puerto Princesa", DISTANCIA)
 
-MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Cataratas del Iguazu", DISTANCIA)
-MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Isla Jeju", DISTANCIA)
-MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Montania de la Mesa", DISTANCIA)
-MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Parque de Komodo", DISTANCIA)
-MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Rio de Puerto Princesa", DISTANCIA)
+MARAVILLAS_N.insert_arist("Amazonas", "Bahia de Ha-Long", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Amazonas", "Cataratas del Iguazu", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Amazonas", "Isla Jeju", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Amazonas", "Montania de la Mesa", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Amazonas", "Parque de Komodo", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Amazonas", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Isla Jeju", DISTANCIA)
-MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Montania de la Mesa", DISTANCIA)
-MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Parque de Komodo", DISTANCIA)
-MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Rio de Puerto Princesa", DISTANCIA)
+MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Cataratas del Iguazu", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Isla Jeju", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Montania de la Mesa", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Parque de Komodo", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Bahia de Ha-Long", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_N.insert_arist("Isla Jeju", "Montania de la Mesa", DISTANCIA)
-MARAVILLAS_N.insert_arist("Isla Jeju", "Parque de Komodo", DISTANCIA)
-MARAVILLAS_N.insert_arist("Isla Jeju", "Rio de Puerto Princesa", DISTANCIA)
+MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Isla Jeju", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Montania de la Mesa", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Parque de Komodo", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Cataratas del Iguazu", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_N.insert_arist("Montania de la Mesa", "Parque de Komodo", DISTANCIA)
-MARAVILLAS_N.insert_arist("Montania de la Mesa", "Rio de Puerto Princesa", DISTANCIA)
+MARAVILLAS_N.insert_arist("Isla Jeju", "Montania de la Mesa", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Isla Jeju", "Parque de Komodo", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Isla Jeju", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_N.insert_arist("Parque de Komodo", "Rio de Puerto Princesa", DISTANCIA)
+MARAVILLAS_N.insert_arist("Montania de la Mesa", "Parque de Komodo", DISTANCIA, CRITERIO)
+MARAVILLAS_N.insert_arist("Montania de la Mesa", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_A.insert_arist("Chichen Itza", "Coliseo de Roma", DISTANCIA)
-MARAVILLAS_A.insert_arist("Chichen Itza", "Cristo Redentor", DISTANCIA)
-MARAVILLAS_A.insert_arist("Chichen Itza", "Gran Muralla China", DISTANCIA)
-MARAVILLAS_A.insert_arist("Chichen Itza", "Machu Picchu", DISTANCIA)
-MARAVILLAS_A.insert_arist("Chichen Itza", "Petra", DISTANCIA)
-MARAVILLAS_A.insert_arist("Chichen Itza", "Taj Mahal", DISTANCIA)
+MARAVILLAS_N.insert_arist("Parque de Komodo", "Rio de Puerto Princesa", DISTANCIA, CRITERIO)
 
-MARAVILLAS_A.insert_arist("Coliseo de Roma", "Cristo Redentor", DISTANCIA)
-MARAVILLAS_A.insert_arist("Coliseo de Roma", "Gran Muralla China", DISTANCIA)
-MARAVILLAS_A.insert_arist("Coliseo de Roma", "Machu Picchu", DISTANCIA)
-MARAVILLAS_A.insert_arist("Coliseo de Roma", "Petra", DISTANCIA)
-MARAVILLAS_A.insert_arist("Coliseo de Roma", "Taj Mahal", DISTANCIA)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Coliseo de Roma", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Cristo Redentor", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Gran Muralla China", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Machu Picchu", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Petra", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Chichen Itza", "Taj Mahal", DISTANCIA, CRITERIO)
 
-MARAVILLAS_A.insert_arist("Gran Muralla China", "Machu Picchu", DISTANCIA)
-MARAVILLAS_A.insert_arist("Gran Muralla China", "Petra", DISTANCIA)
-MARAVILLAS_A.insert_arist("Gran Muralla China", "Taj Mahal", DISTANCIA)
+MARAVILLAS_A.insert_arist("Coliseo de Roma", "Cristo Redentor", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Coliseo de Roma", "Gran Muralla China", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Coliseo de Roma", "Machu Picchu", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Coliseo de Roma", "Petra", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Coliseo de Roma", "Taj Mahal", DISTANCIA, CRITERIO)
+
+MARAVILLAS_A.insert_arist("Gran Muralla China", "Machu Picchu", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Gran Muralla China", "Petra", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Gran Muralla China", "Taj Mahal", DISTANCIA, CRITERIO)
 
 
-MARAVILLAS_A.insert_arist("Machu Picchu", "Petra", DISTANCIA)
-MARAVILLAS_A.insert_arist("Machu Picchu", "Taj Mahal", DISTANCIA)
+MARAVILLAS_A.insert_arist("Machu Picchu", "Petra", DISTANCIA, CRITERIO)
+MARAVILLAS_A.insert_arist("Machu Picchu", "Taj Mahal", DISTANCIA, CRITERIO)
 
-MARAVILLAS_A.insert_arist("Petra", "Taj Mahal", DISTANCIA)
+MARAVILLAS_A.insert_arist("Petra", "Taj Mahal", DISTANCIA, CRITERIO)
 
 print("\nC:")
-print(MARAVILLAS_N.kruskal())
-print(MARAVILLAS_A.kruskal())
+#print(MARAVILLAS_N.kruskal())
+#print(MARAVILLAS_A.kruskal())
 
 print("\nD:")
